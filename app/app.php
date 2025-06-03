@@ -8,4 +8,6 @@ $commandFile = __DIR__ . '/commands/' . $command . '.php';
 
 if (file_exists($commandFile)) {
   require $commandFile;
+} else {
+  echo "Wrong command! List of available commands: add, list, update\n";
 }
