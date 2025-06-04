@@ -3,7 +3,7 @@
 include __DIR__ . '/../load_tasks.php';
 
 $searchedID = (int) $argv[2];
-$newDesk = $argv[3];
+$status = explode('-', $argv[1], 2)[1];
 $updateStatus = false;
 
 if ($searchedID === 0) {
@@ -13,12 +13,12 @@ if ($searchedID === 0) {
 
 foreach ($tasks as &$task) {
   if ($task['id'] === $searchedID) {
-    $task['description'] = $newDesk;
+    $task['status'] = $status;
     $task['updatedAt'] = date("d.m.Y H:i");
 
     $updateStatus = true;
 
-    echo "Task updated successsfully (ID: {$searchedID}. New description: {$newDesk})\n";
+    echo "Task marked $status! (ID: {$searchedID})\n";
     break;
   }
 }
@@ -29,4 +29,3 @@ if (!$updateStatus) {
   echo "Todo with such ID is not found!\n";
   exit();
 }
-

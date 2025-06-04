@@ -3,7 +3,6 @@
 include __DIR__ . '/../load_tasks.php';
 
 $searchedID = (int) $argv[2];
-$newDesk = $argv[3];
 $updateStatus = false;
 
 if ($searchedID === 0) {
@@ -11,14 +10,12 @@ if ($searchedID === 0) {
   exit();
 }
 
-foreach ($tasks as &$task) {
+foreach ($tasks as $key => $task) {
   if ($task['id'] === $searchedID) {
-    $task['description'] = $newDesk;
-    $task['updatedAt'] = date("d.m.Y H:i");
 
     $updateStatus = true;
-
-    echo "Task updated successsfully (ID: {$searchedID}. New description: {$newDesk})\n";
+    unset($tasks[$key]);
+    echo "Task deleted\n";
     break;
   }
 }

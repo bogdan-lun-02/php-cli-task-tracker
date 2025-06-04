@@ -1,12 +1,12 @@
 <?php
 
-$jsonTasks = __DIR__ . '/../tasks.json';
+include __DIR__ . '/../load_tasks.php';
 
-if (file_exists($jsonTasks)) {
-  $tasks = json_decode(file_get_contents($jsonTasks), true) ?? [];
+$status = $argv[2] ?? '';
+
+if (!empty($status)) {
+  $tasks = array_filter($tasks, fn($task) => $task['status'] === $status);
 }
-
-// print_r($tasks);
 
 foreach ($tasks as $task) {
   echo "Description: {$task['description']}. ID: {$task['id']}\n";
@@ -15,3 +15,4 @@ foreach ($tasks as $task) {
   echo "Last update: {$task['updatedAt']}\n";
   echo "-------------------------------------\n";
 }
+
