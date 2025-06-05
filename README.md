@@ -14,8 +14,8 @@ https://roadmap.sh/projects/task-tracker
 2. Use commands below
 
 ## Example of commands:
-- **phptask-cli add 'New todo'**
-- **phptask-cli update 1 'New todo 2'**
+- **php task-cli add 'New todo'**
+- **php task-cli update 1 'New todo 2'**
 - **php task-cli mark-in-progress 1**
 - **php task-cli mark-done 1**
 - **php task-cli list**
